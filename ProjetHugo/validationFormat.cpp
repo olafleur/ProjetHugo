@@ -6,6 +6,7 @@
  */
 
 #include <iostream>
+#include "stdafx.h"
 #include "validationFormat.h"
 
 bool validerImmatriculation (const std::string& p_immatriculation)
@@ -17,7 +18,7 @@ bool validerImmatriculation (const std::string& p_immatriculation)
 	}
 	else
 	{
-	if (p_immatriculation[0] == "L")
+	if (p_immatriculation[0] == 'L')
 	{
 		for (verifier = 0; verifier < 7; verifier++)
 		{
@@ -37,7 +38,7 @@ bool validerImmatriculation (const std::string& p_immatriculation)
 			{
 				if (isupper(p_immatriculation[2]))
 				{
-					if (p_immatriculation[3] == "")
+					if (p_immatriculation[3] == ' ')
 					{
 						int verifier = 4;
 						for (verifier = 4; verifier < 7; verifier++)
@@ -64,7 +65,7 @@ bool validerImmatriculation (const std::string& p_immatriculation)
 					{
 						if (isdigit(p_immatriculation[2]))
 						{
-							if (p_immatriculation[3] == "")
+							if (p_immatriculation[3] == ' ')
 							{
 								int verifier = 4;
 								for (verifier = 4; verifier < 7; verifier++)
@@ -98,7 +99,7 @@ bool validerImmatriculation (const std::string& p_immatriculation)
 					return false;
 				}
 			}
-			if (p_immatriculation[3] == "H")
+			if (p_immatriculation[3] == 'H')
 			{
 				int verifier = 4;
 				for (verifier = 4; verifier < 7; verifier++)
@@ -113,7 +114,7 @@ bool validerImmatriculation (const std::string& p_immatriculation)
 				} return true;
 			} else
 			{
-				if (p_immatriculation[3] == "")
+				if (p_immatriculation[3] == ' ')
 				{
 					int verifier = 4;
 					for (verifier = 4; verifier < 7; verifier++)
@@ -143,8 +144,10 @@ bool validerNiv (const std::string& p_niv)
 	int totaux [17];
 	int poids [17] = {8,7,6,5,4,3,2,10,0,9,8,7,6,5,4,3,2};
 	int checkdigit = 0;
+	int valnum[17];
+
 	longueur = p_niv.length();
-if 	(p_niv[9] == "X")
+if 	(p_niv[9] == 'X')
 {
 	checkdigit = 10;
 } else
@@ -167,66 +170,66 @@ if 	(p_niv[9] == "X")
 		{
 			if (isdigit(p_niv[verifier]))
 			{
-
+				valnum[verifier] = p_niv[verifier];
 			} else
 				{
-					if (p_niv[verifier] == "A" ||
-						p_niv[verifier] == "J")
+					if (p_niv[verifier] == 'A' ||
+						p_niv[verifier] == 'J')
 					{
-						p_niv[verifier] = 1;
+						valnum[verifier] = 1;
 					} else
 					{
-						if (p_niv[verifier] == "B" ||
-							p_niv[verifier] == "K" ||
-							p_niv[verifier] == "S")
+						if (p_niv[verifier] == 'B' ||
+							p_niv[verifier] == 'K' ||
+							p_niv[verifier] == 'S')
 						{
-							p_niv[verifier] = 2;
+							valnum[verifier] = 2;
 						} else
 						{
-							if (p_niv[verifier] == "C" ||
-								p_niv[verifier] == "L" ||
-								p_niv[verifier] == "T")
+							if (p_niv[verifier] == 'C' ||
+								p_niv[verifier] == 'L' ||
+								p_niv[verifier] == 'T')
 							{
-								p_niv[verifier] = 3;
+								valnum[verifier] = 3;
 							}else
 							{
-								if (p_niv[verifier] == "D" ||
-									p_niv[verifier] == "M" ||
-									p_niv[verifier] == "U")
+								if (p_niv[verifier] == 'D' ||
+									p_niv[verifier] == 'M' ||
+									p_niv[verifier] == 'U')
 								{
-									p_niv[verifier] = 4;
+									valnum[verifier] = 4;
 								}else
 								{
-									if (p_niv[verifier] == "E" ||
-										p_niv[verifier] == "N" ||
-										p_niv[verifier] == "V")
+									if (p_niv[verifier] == 'E' ||
+										p_niv[verifier] == 'N' ||
+										p_niv[verifier] == 'V')
 									{
-										p_niv[verifier] = 5;
+										valnum[verifier] = 5;
 									}else
 									{
-										if (p_niv[verifier] == "F" ||
-											p_niv[verifier] == "W")
+										if (p_niv[verifier] == 'F' ||
+											p_niv[verifier] == 'W')
 										{
-											p_niv[verifier] = 6;
+											valnum[verifier] = 6;
 										}else
 										{
-											if (p_niv[verifier] == "G" ||
-												p_niv[verifier] == "P" ||
-												p_niv[verifier] == "X")
+											if (p_niv[verifier] == 'G' ||
+												p_niv[verifier] == 'P' ||
+												p_niv[verifier] == 'X')
 											{
-												p_niv[verifier] = 7;
+												valnum[verifier] = 7;
 											}else
 											{
-												if (p_niv[verifier] == "H" ||
-													p_niv[verifier] == "Y")
+												if (p_niv[verifier] == 'H' ||
+													p_niv[verifier] == 'Y')
 												{
-													p_niv[verifier] = 8;
+													valnum[verifier] = 8;
 												}else
 												{
-													if (p_niv[verifier] == "R" ||
-														p_niv[verifier] == "Z")
+													if (p_niv[verifier] == 'R' ||
+														p_niv[verifier] == 'Z')
 													{
-														p_niv[verifier] = 9;
+														valnum[verifier] = 9;
 													}else
 													{
 														return false;
@@ -243,7 +246,7 @@ if 	(p_niv[9] == "X")
 		}
 		for (multiplicateur = 0; multiplicateur < 17; multiplicateur++)
 		{
-			totaux [multiplicateur] = p_niv[multiplicateur] * poids[multiplicateur];
+			totaux [multiplicateur] = valnum[multiplicateur] * poids[multiplicateur];
 		}
 		int totalfinal = 0;
 		int addition = 0;
@@ -261,5 +264,3 @@ if 	(p_niv[9] == "X")
 		}
 	}
 }
-
-
